@@ -1,9 +1,9 @@
 import numpy as np
 from src import firstFilepath, fullFilepath, columnsLen
-import input_methods as im
+import functions as fn
 
 
-content = im.input_lines_from_file(firstFilepath, 1)
+content = fn.input_lines_from_file(firstFilepath, 1)
 
 contentLen = len(content)
 rowsLen = contentLen//columnsLen
