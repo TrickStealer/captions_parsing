@@ -1,20 +1,11 @@
 import numpy as np
-from src import firstFilepath, fullFilepath
+from src import firstFilepath, fullFilepath, columnsLen
 import input_methods as im
 
-columnsTuple = (
-    'number',   #0
-    'time',     #1
-    'srb',      #2
-    '-',        #3
-    'eng',      #4
-    'empty'     #5
-)
 
 content = im.input_lines_from_file(firstFilepath, 1)
 
 contentLen = len(content)
-columnsLen = len(columnsTuple)
 rowsLen = contentLen//columnsLen
 
 captions = content.reshape(rowsLen, columnsLen)

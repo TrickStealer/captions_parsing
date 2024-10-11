@@ -13,3 +13,4 @@ def input_lines_from_file(filepath, appendNum):
         content.append('')
 
     return np.array(content)
+
