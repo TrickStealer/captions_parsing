@@ -1,12 +1,6 @@
-# import pandas as pd
 import numpy as np
-
-firstFilepath = "/mnt/files/coding/python/captions_parsing/caption_files/captions_basic_orbits_srb_eng.kdenlive.srt"
-fullFilepath = "/mnt/files/coding/python/captions_parsing/caption_files/captions_basic_orbits_full.tsv"
-
-
-with open(firstFilepath, 'r') as file:
-    content = file.readlines()
+from src import firstFilepath, fullFilepath
+import input_methods as im
 
 columnsTuple = (
     'number',   #0
@@ -17,18 +11,13 @@ columnsTuple = (
     'empty'     #5
 )
 
+content = im.input_lines_from_file(firstFilepath, 1)
+
 contentLen = len(content)
 columnsLen = len(columnsTuple)
-rowsLen = contentLen//columnsLen + 1
+rowsLen = contentLen//columnsLen
 
-lineNum = 0
-for line in content:
-    content[lineNum] = line.strip('\n')
-    lineNum += 1
-
-content.append('')
-contentNP = np.array(content)
-captions = contentNP.reshape(rowsLen, columnsLen)
+captions = content.reshape(rowsLen, columnsLen)
 # captionsT = captions.T
 
 a = captions[0]
