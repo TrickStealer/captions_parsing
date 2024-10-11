@@ -14,3 +14,5 @@ columnsLen = len(columnsTuple)
 
 # Output data
 fullFilepath = "../caption_files/captions_basic_orbits_full.tsv"
+
+engFilepath = "../caption_files/captions_basic_orbits_eng.kdenlive.srt"

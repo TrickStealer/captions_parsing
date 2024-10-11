@@ -1,27 +1,18 @@
 import numpy as np
-from src import firstFilepath, fullFilepath, columnsLen
+from src import (firstFilepath, fullFilepath, engFilepath,
+                 columnsTuple, columnsLen)
 import functions as fn
 
+MODE_TO_TSV = 0
+MODE_TO_ENG = 1
+MODE_TO_SRB = 2
+
+mode = MODE_TO_ENG
 
 content = fn.input_lines_from_file(firstFilepath, 1)
+captions = fn.create_array(content, columnsLen)
 
-contentLen = len(content)
-rowsLen = contentLen//columnsLen
-
-captions = content.reshape(rowsLen, columnsLen)
-# captionsT = captions.T
-
-a = captions[0]
-b = captions[1]
-
-resultFile = open(fullFilepath, 'w')
-
-for raw in range(rowsLen):
-    resultData = [
-        captions[raw][1], # time
-        captions[raw][2], # srb
-        captions[raw][4]  # eng
-    ]
-    resultLine = '\t'.join(resultData)
-    resultFile.write(resultLine + '\n')
-
+if mode == MODE_TO_TSV:
+    fn.write_data_to_tsv(fullFilepath, captions, [1,2,4])
+elif mode == MODE_TO_ENG:
+    fn.write_data_to_captions(engFilepath, captions, 4)
